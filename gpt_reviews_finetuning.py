@@ -1,26 +1,16 @@
-# Copyright (c) Sebastian Raschka under Apache License 2.0 (see LICENSE.txt).
-# Source for "Build a Large Language Model From Scratch"
-#   - https://www.manning.com/books/build-a-large-language-model-from-scratch
-# Code: https://github.com/rasbt/LLMs-from-scratch
-#
-# This file collects all the relevant code that we covered thus far
-# throughout Chapters 2-6.
-# This file can be run as a standalone script.
-
-
+#_____________________________________________________________________________________________
+# LIBRARY PACKAGES
+#_____________________________________________________________________________________________
 import matplotlib.pyplot as plt
 import numpy as np
 import tiktoken
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-#from torch.cuda.amp import autocast, GradScaler
 from torch import autocast, GradScaler
 import gc
 
-#####################################
-# Chapter 3
-#####################################
+
 class MultiHeadAttention(nn.Module):
     def __init__(self, d_in, d_out, context_length, dropout, num_heads, qkv_bias=False):
         super().__init__()
@@ -77,9 +67,6 @@ class MultiHeadAttention(nn.Module):
         return context_vec
 
 
-#####################################
-# Chapter 4
-#####################################
 class LayerNorm(nn.Module):
     def __init__(self, emb_dim):
         super().__init__()
@@ -202,9 +189,6 @@ def generate_text_simple(model, idx, max_new_tokens, context_size):
     return idx
 
 
-#####################################
-# Chapter 5
-#####################################
 def generate(model, idx, max_new_tokens, context_size, temperature=0.0, top_k=None, eos_id=None):
 
     # For-loop is the same as before: Get logits, and only focus on last time step

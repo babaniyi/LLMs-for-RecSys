@@ -733,7 +733,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Amazon reviews instruction data finetuned using a GPT model"
     )
-    options = {"baseline", "phi3_prompt", "lora"}
+    options = {"baseline", "phi3_prompt", "alpaca_and_lora", "phi3_and_lora"}
     parser.add_argument(
         "--run_solution",
         type=str,
@@ -747,11 +747,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.run_solution == "baseline":
-        main() # use alpaca style and no - lora
+        main(phi3_prompt=False, lora=False) # use alpaca style and no - lora
     elif args.run_solution == "phi3_prompt":
-        main(phi3_prompt=True) # use phi3 style and no -lora
-    elif args.run_solution == "lora":
-        main(lora=True) # use alpaca and lora
+        main(phi3_prompt=True, lora=False) # use phi3 style and no -lora
+    elif args.run_solution == "alpaca_and_lora":
+        main(phi3_prompt=False, lora=True) # use alpaca and lora
+    elif args.run_solution == "phi3_and_lora":
+        main(phi3_prompt=True, lora=True)
+
     else:
         raise ValueError(f"{args.run_solution} is not a valid --args.run_solution option. Options: {options}")
 
