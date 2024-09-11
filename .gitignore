@@ -6,6 +6,7 @@ data/raw/
 gpt2/
 *.vscode
 *.idea
+amazon_training.ipynb
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

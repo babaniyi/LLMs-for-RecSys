@@ -1,20 +1,29 @@
 # **LLM-based Product Recommender System**
 
-This repository contains a project focused on building a product recommendation system using Large Language Models (LLMs). The system is fine-tuned on Amazon reviews data to predict the next products a user may purchase based on their historical interactions. The recommendation model leverages GPT-2 as a foundation and incorporates custom padding and data processing strategies to handle sequential product recommendations.
-It is interesting to note that in the test data where the user did not make an purchase, the model (can) predicts items the user could purchase which is similar to collaborative filtering in traditional recommender systems.
+This repository contains a project focused on building a product recommendation system using Large Language Models (LLMs). The system is fine-tuned on Amazon appliances reviews and product metadata to predict the **exact** next products a user may purchase based on their historical interactions. The recommendation model leverages GPT-2 as a foundation and incorporates custom padding and data processing strategies to handle sequential product recommendations.
 
 ---
 
 ## **Project Overview**
-
-The goal of this project is to fine-tune a pre-trained GPT-2 model to generate personalized product recommendations for users, based on historical reviews and item details. The project follows a sequential recommendation strategy, where the model predicts the next products a user may purchase. 
+This project explores the use of large language models (LLMs) for product recommendation systems, leveraging their natural language understanding capabilities to predict which items a user might purchase or review next. The primary focus is not solely on achieving high prediction accuracy but rather on learning if LLMs can be effectively applied in the recommendation domain.
 
 ### **Key Features:**
-- **Sequential Recommendation System**: Predicts the next (maximum) 10 items a user might purchase, based on their review history.
-- **Custom Data Processing**: Handles temporal data and processes the sequence of user interactions, ensuring proper padding and handling of missing data.
+- **Sequential Recommendation System**: Predicts the next (maximum) 10 items a user might purchase in the future, based on their review history.
+- **Custom Data Processing**: Handles temporal data (order by time to prevent data/target/information leakage) and processes the sequence of user interactions, ensuring proper padding and handling of missing data.
 - **Fine-tuning GPT-2**: Fine-tuned GPT-2 medium model to handle recommendation tasks using user reviews, product metadata, and timestamps.
-- **Evaluation Metrics**: Supports evaluation with metrics such as Recall@10, Precision@10, and more.
+- **Evaluation Metrics**: Supports evaluation with metrics such as Recall, Precision, MRR and more.
 - **Custom Padding Strategies**: The model can handle missing data with customizable padding strategies (repeat, special token, or no padding).
+
+#### Achieved Metrics on Test Data:
+- **Precision@10**: $2.2\%$
+- **Recall@10**: $5.5\%$
+- **Mean Reciprocal Rank (MRR)**: $4.1\%$
+
+These metrics provide insight into the model's ability to recommend relevant products. The precision@10 indicates that, on average, $2.2\%$ of the top-10 recommended items are correct. Recall@10 suggests the model can retrieve nearly $6\%$ of all relevant items. The MRR score of $4\%$ shows that correct recommendations are, on average, ranked quite low in the list.
+
+> While these numbers are modest and indicate that the model is far from perfect in recommending the exact next items, they still offer valuable insight into the potential of LLMs in capturing user intent and product features. The next iteration will involve comparing the LLM-based system's performance with more traditional baseline methods, such as collaborative filtering and matrix factorization, to assess its relative effectiveness.
+
+To reiterate, the primary focus of this project is not just to maximize performance but to explore whether LLMs can offer a viable approach to recommendation tasks. The experiment is ongoing, and future improvements will focus on refining the model and comparing its performance with these baseline approaches. If one is focused on prediction accuracy alone, we could train the model on predicting the next product category a customer would purchase instead of exact items.
 
 ---
 
@@ -34,9 +43,9 @@ The goal of this project is to fine-tune a pre-trained GPT-2 model to generate p
 
 ## **Data**
 
-This project uses Amazon Appliance Reviews data for training, validation, and testing. The dataset consists of:
-- **User Reviews**: Including `user_id`, `review_text`, `item_id`, and `timestamp`.
-- **Product Metadata**: Including `item_id`, `title`, `category`, `features`, `price`, and more.
+This project uses Amazon Appliance Reviews data for training, validation, and testing. The dataset can be broadky categorised into:
+- **User Reviews**: Including `user_id`, `review_text`, `parent_asin`, and `timestamp`.
+- **Product Metadata**: Including `parent_asin`, `title`, `category`, `features`, `price`, and more.
 
 Each row in the dataset is processed to generate the next 10 items that the user interacted with. Data is split into training, validation, and test sets, keeping the temporal nature of user interactions intact.
 
@@ -100,8 +109,8 @@ If you want to run the model using Phi3-style prompt **without** LORA
 python gpt-experiment.py --run_solution phi3_prompt
 ```
 
-```bash
 If you want to run the model using Phi3-style prompt **with** LORA
+```bash
 python gpt-experiment.py --run_solution phi3_and_lora
 ```
 
@@ -210,8 +219,14 @@ For any questions or issues, feel free to open an issue on this repository or re
 ---
 
 ### **Acknowledgements**
-- Sebastian Raschka: For his wonderful book/course that serves as the main bedrock and motivation of this project. [Building LLMs from Scratch](https://www.manning.com/books/build-a-large-language-model-from-scratch)
+> Raschka, Sebastian. Build A Large Language Model (From Scratch). Manning, 2024. ISBN: 978-1633437166.
 
+> @article{hou2024bridging,
+  title={Bridging Language and Items for Retrieval and Recommendation},
+  author={Hou, Yupeng and Li, Jiacheng and He, Zhankui and Yan, An and Chen, Xiusi and McAuley, Julian},
+  journal={arXiv preprint arXiv:2403.03952},
+  year={2024}
+}
 
 ### **Citation**
 If you use this project or its code, please consider citing it as follows:
