@@ -15,11 +15,11 @@ This project explores the use of large language models (LLMs) for product recomm
 - **Custom Padding Strategies**: The model can handle missing data with customizable padding strategies (repeat, special token, or no padding).
 
 #### Achieved Metrics on Test Data:
-- **Precision@10**: $2.2\%$
-- **Recall@10**: $5.5\%$
-- **Mean Reciprocal Rank (MRR)**: $4.1\%$
+- **Precision@10**: $2.2$%
+- **Recall@10**: $5.5$%
+- **Mean Reciprocal Rank (MRR)**: $0.04$
 
-These metrics provide insight into the model's ability to recommend relevant products. The precision@10 indicates that, on average, $2.2\%$ of the top-10 recommended items are correct. Recall@10 suggests the model can retrieve nearly $6\%$ of all relevant items. The MRR score of $4\%$ shows that correct recommendations are, on average, ranked quite low in the list.
+These metrics provide insight into the model's ability to recommend relevant products. The precision@10 indicates that, on average, $2.2$% of the top-10 recommended items are correct. Recall@10 suggests the model can retrieve nearly $6$% of all relevant items. The MRR score of $0.04$ shows that correct recommendations are, on average, ranked quite low in the list.
 
 > While these numbers are modest and indicate that the model is far from perfect in recommending the exact next items, they still offer valuable insight into the potential of LLMs in capturing user intent and product features. The next iteration will involve comparing the LLM-based system's performance with more traditional baseline methods, such as collaborative filtering and matrix factorization, to assess its relative effectiveness.
 
