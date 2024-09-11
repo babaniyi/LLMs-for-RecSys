@@ -210,17 +210,19 @@ For any questions or issues, feel free to open an issue on this repository or re
 ---
 
 ### **Acknowledgements**
-- Sebastian Raschka: For his wonderful book/course that serves as the main motivation of this project. [Building LLMs from Scratch](https://www.manning.com/books/build-a-large-language-model-from-scratch)
+- Sebastian Raschka: For his wonderful book/course that serves as the main bedrock and motivation of this project. [Building LLMs from Scratch](https://www.manning.com/books/build-a-large-language-model-from-scratch)
 
 
 ### **Citation**
+If you use this project or its code, please consider citing it as follows:
 
+```
 @article{llms-for-product-recsys,
-  title   = {LLM-based Product Recommender System} ,
-  author  = {Babaniyi Olaniyi},
-  journal = {babaniyi.com},
-  year    = {2024},
-  month   = {September},
-  github  = {https://github.com/babaniyi/LLMs-for-RecSys}
+    title       = {LLM-based Product Recommender System},
+    author      = {Babaniyi Olaniyi},
+    journal     = {babaniyi.com},
+    year        = {2024},
+    month       = {September},
+    github      = {https://github.com/babaniyi/LLMs-for-RecSys}
 }
----
+```

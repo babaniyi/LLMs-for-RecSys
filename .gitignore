@@ -4,7 +4,8 @@ data/raw/
 *.lightning_studio
 *.pth
 gpt2/
-
+*.vscode
+*.idea
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
