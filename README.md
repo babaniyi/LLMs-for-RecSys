@@ -14,7 +14,7 @@ This project explores the use of large language models (LLMs) for product recomm
 - **Evaluation Metrics**: Supports evaluation with metrics such as Recall, Precision, MRR and more.
 - **Custom Padding Strategies**: The model can handle missing data with customizable padding strategies (repeat, special token, or no padding).
 
-#### Achieved Metrics on Test Data:
+#### Achieved Metrics:
 - **Precision@10**: $2.2$%
 - **Recall@10**: $5.5$%
 - **Mean Reciprocal Rank (MRR)**: $0.04$
