@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/lightning-annotations.json" />
+      <excludeFolder url="file://$MODULE_DIR$/.lightning-app-sync" />
+      <excludeFolder url="file://$MODULE_DIR$/.lightning-app-run" />
+      <excludeFolder url="file://$MODULE_DIR$/.lightning-upload" />
+      <excludeFolder url="file://$MODULE_DIR$/.ssh" />
+      <excludeFolder url="file://$MODULE_DIR$/.conda" />
+      <excludeFolder url="file://$MODULE_DIR$/.config" />
+      <excludeFolder url="file://$MODULE_DIR$/.npm" />
+      <excludeFolder url="file://$MODULE_DIR$/.nvm" />
+      <excludeFolder url="file://$MODULE_DIR$/.bower" />
+      <excludeFolder url="file://$MODULE_DIR$/.ipython" />
+      <excludeFolder url="file://$MODULE_DIR$/.local" />
+      <excludeFolder url="file://$MODULE_DIR$/.oh-my-zsh" />
+      <excludeFolder url="file://$MODULE_DIR$/.cache" />
+      <excludeFolder url="file://$MODULE_DIR$/miniconda3" />
+      <excludeFolder url="file://$MODULE_DIR$/.condarc" />
+      <excludeFolder url="file://$MODULE_DIR$/.gitconfig" />
+      <excludeFolder url="file://$MODULE_DIR$/.hushlogin" />
+      <excludeFolder url="file://$MODULE_DIR$/.profile" />
+      <excludeFolder url="file://$MODULE_DIR$/.screenrc" />
+      <excludeFolder url="file://$MODULE_DIR$/.sudo_as_admin_successful" />
+      <excludeFolder url="file://$MODULE_DIR$/.zcompdump" />
+      <excludeFolder url="file://$MODULE_DIR$/.bash_history" />
+      <excludeFolder url="file://$MODULE_DIR$/.bashrc" />
+      <excludeFolder url="file://$MODULE_DIR$/.zsh_history" />
+      <excludeFolder url="file://$MODULE_DIR$/.zshrc" />
+      <excludeFolder url="file://$MODULE_DIR$/.zshenv" />
+      <excludeFolder url="file://$MODULE_DIR$/.zlogin" />
+      <excludeFolder url="file://$MODULE_DIR$/.zprofile" />
+      <excludeFolder url="file://$MODULE_DIR$/.zlogout" />
+      <excludeFolder url="file://$MODULE_DIR$/.python_history" />
+      <excludeFolder url="file://$MODULE_DIR$/.lightningignore" />
+      <excludeFolder url="file://$MODULE_DIR$/.nv" />
+      <excludeFolder url="file://$MODULE_DIR$/.docker" />
+      <excludeFolder url="file://$MODULE_DIR$/.jupyter" />
+      <excludeFolder url="file://$MODULE_DIR$/.lightning" />
+      <excludeFolder url="file://$MODULE_DIR$/.vscode" />
+      <excludeFolder url="file://$MODULE_DIR$/.wget-hsts" />
+      <excludeFolder url="file://$MODULE_DIR$/.vscode-server" />
+      <excludeFolder url="file://$MODULE_DIR$/.vscode-server-insiders" />
+      <excludeFolder url="file://$MODULE_DIR$/.tmplaigit" />
+      <excludeFolder url="file://$MODULE_DIR$/.viminfo" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/.java" />
+      <excludeFolder url="file://$MODULE_DIR$/.dotnet" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
