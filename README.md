@@ -2,6 +2,8 @@
 
 This repository contains a project focused on building a product recommendation system using Large Language Models (LLMs). The system is fine-tuned on Amazon appliances reviews and product metadata to predict the **exact** next products a user may purchase based on their historical interactions. The recommendation model leverages GPT-2 as a foundation and incorporates custom padding and data processing strategies to handle sequential product recommendations.
 
+
+
 ---
 
 ## **Project Overview**
@@ -164,7 +166,7 @@ Example of the processed data sent to the model.
 {
     "input": "<|user_AE2BFR2EGPHCYISLCTPOX2AQHKVQ|>",
     "output": "<|item_B07FTFD1XB|>, <|endoftext|>, <|endoftext|>, <|endoftext|>, <|endoftext|>, <|endoftext|>, <|endoftext|>, <|endoftext|>, <|endoftext|>, <|endoftext|>",
-    "instruction": "Given a user purchased an an item with the following details, predict the next 10 items the user would  purchase. Item id is <|item_B00Y5UZD5I|>. Rating of the item by user from 1 to 5 is 2.0. Text of the user review is To expensive, the quality is questionable... The coating is thin and becomes damaged very easy! I would not recommend for these reasons. Main category of the item is Tools & Home Improvement. Item name is GE WD28X10399 Upper Rack. Price USD is nan. Item details is manufacturer is: GE. part number is: WD28X10399. item weight is: 0.32 ounces. product dimensions is: 4.1 x 0.4 x 2.5 inches. item model number is: WD28X10399. item package quantity is: 1. certification is: Certified frustration-free, Not Applicable. included components is: Appliance-replacement-parts, Appliance Parts & Accessories. batteries included? is: No. batteries required? is: No. best sellers rank is: {'Tools & Home Improvement': 604524, 'Parts & Accessories': 91543}. date first available is: November 21, 2013.",
+    "instruction": "Given a user purchased an an item with the following details, predict the next 10 items the user would purchase. Item id is <|item_B00Y5UZD5I|>. Rating of the item by     user from 1 to 5 is 2.0. Text of the user review is To expensive, the quality is questionable... The coating is thin and becomes damaged very easy! I would not recommend for these         reasons. Main category of the item is Tools & Home Improvement. Item name is GE WD28X10399 Upper Rack. Price USD is nan. Item details is manufacturer is: GE. part number is:               WD28X10399. item weight is: 0.32 ounces. product dimensions is: 4.1 x 0.4 x 2.5 inches. item model number is: WD28X10399. item package quantity is: 1. certification is: Certified         frustration-free, Not Applicable. included components is: Appliance-replacement-parts, Appliance Parts & Accessories. batteries included? is: No. batteries required? is: No. best         sellers rank is: {'Tools & Home Improvement': 604524, 'Parts & Accessories': 91543}. date first available is: November 21, 2013.",
     },
 ```
 
