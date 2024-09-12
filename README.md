@@ -13,7 +13,7 @@ This project explores the use of large language models (LLMs) for product recomm
 - **Sequential Recommendation System**: Predicts the next (maximum) 10 items a user might purchase in the future, based on their review history.
 - **Custom Data Processing**: Handles temporal data (order by time to prevent data/target/information leakage) and processes the sequence of user interactions, ensuring proper padding and handling of missing data.
 - **Fine-tuning GPT-2**: Fine-tuned GPT-2 medium model to handle recommendation tasks using user reviews, product metadata, and timestamps.
-- **Evaluation Metrics**: Supports evaluation with metrics such as Recall, Precision, MRR and more.
+- **Evaluation Metrics**: Supports evaluation with metrics such as Recall, Precision, MRR, HR@10, NDCG@10 and more.
 - **Custom Padding Strategies**: The model can handle missing data with customizable padding strategies (repeat, special token, or no padding).
 
 #### Achieved Metrics:
@@ -175,7 +175,7 @@ Example of the processed data sent to the model.
 
 ## **Evaluation**
 
-The model supports evaluation metrics like Recall, Precision, Mean Reciprocal Rank. After generating predictions for a batch of reviews, the recommended items are compared with the actual next items to calculate these metrics.
+The model supports evaluation metrics such as Recall, Precision, Mean Reciprocal Rank (MRR), Hit Rate at 10 (HR@10), and Normalized Discounted Cumulative Gain at 10 (NDCG@10). After generating predictions for a batch of reviews, the recommended items are compared with the actual next items to calculate these metrics.
 
 You can evaluate the model using the `evaluate_recall_precision` function:
 
