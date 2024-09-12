@@ -1,11 +1,13 @@
 # **LLM-based Product Recommender System**
 
-This repository contains a project focused on building a product recommendation system using Large Language Models (LLMs). The system is fine-tuned on Amazon appliances reviews and product metadata to predict the **exact** next products a user may purchase based on their historical interactions. The recommendation model leverages GPT-2 as a foundation and incorporates custom padding and data processing strategies to handle sequential product recommendations.
+This repository contains a project focused on building a product recommendation system using Large Language Models (LLMs). The system is fine-tuned on Amazon appliance reviews and product metadata to predict the **exact** next products a user may purchase based on their historical interactions. The recommendation model leverages GPT-2 as a foundation and incorporates custom padding and data processing strategies to handle sequential product recommendations.
 
 ---
 
 ## **Project Overview**
 This project explores the use of large language models (LLMs) for product recommendation systems, leveraging their natural language understanding capabilities to predict which items a user might purchase or review next. The primary focus is not solely on achieving high prediction accuracy but rather on learning if LLMs can be effectively applied in the recommendation domain.
+
+This code was run using [Lightning AI](lightning.ai) L4 GPU.
 
 ### **Key Features:**
 - **Sequential Recommendation System**: Predicts the next (maximum) 10 items a user might purchase in the future, based on their review history.
@@ -19,11 +21,11 @@ This project explores the use of large language models (LLMs) for product recomm
 - **Recall@10**: $5.5$%
 - **Mean Reciprocal Rank (MRR)**: $0.04$
 
-These metrics provide insight into the model's ability to recommend relevant products. The precision@10 indicates that, on average, $2.2$% of the top-10 recommended items are correct. Recall@10 suggests the model can retrieve nearly $6$% of all relevant items. The MRR score of $0.04$ shows that correct recommendations are, on average, ranked quite low in the list.
+These metrics provide insight into the model's ability to recommend relevant products. The precision@10 indicates that, on average, out of the top 10 items recommended, only 2.2% of the recommendations were correct. Recall@10 suggests the model can retrieve nearly $6$% of all relevant items. The MRR measures how high the first relevant item appears in the recommendation list. A score of 0.04 suggests that the first relevant item is generally ranked lower in the top 10 results, which means the model is not prioritizing relevant items very early in the list.
 
-> While these numbers are modest and indicate that the model is far from perfect in recommending the exact next items, they still offer valuable insight into the potential of LLMs in capturing user intent and product features. The next iteration will involve comparing the LLM-based system's performance with more traditional baseline methods, such as collaborative filtering and matrix factorization, to assess its relative effectiveness.
+> While these numbers are modest and indicate that the model is far from perfect in recommending the exact next items, they still offer valuable insight into the potential of LLMs in capturing user intent and product features.
 
-To reiterate, the primary focus of this project is not just to maximize performance but to explore whether LLMs can offer a viable approach to recommendation tasks. The experiment is ongoing, and future improvements will focus on refining the model and comparing its performance with these baseline approaches. If one is focused on prediction accuracy alone, we could train the model on predicting the next product category a customer would purchase instead of exact items.
+To reiterate, the primary focus of this project is not just to maximize performance but to explore whether LLMs can offer a viable approach to recommendation tasks. The experiment is ongoing, and future improvements will focus on refining the model and comparing its performance with these baseline approaches (such as collaborative filtering and matrix factorization). If one is focused on prediction accuracy alone, we could train the model on predicting the next product category a customer would purchase instead of exact items.
 
 ---
 
@@ -43,7 +45,7 @@ To reiterate, the primary focus of this project is not just to maximize performa
 
 ## **Data**
 
-This project uses Amazon Appliance Reviews data for training, validation, and testing. The dataset can be broadky categorised into:
+This project uses Amazon Appliance Reviews data for training, validation, and testing. The dataset can be broadly categorised into:
 - **User Reviews**: Including `user_id`, `review_text`, `parent_asin`, and `timestamp`.
 - **Product Metadata**: Including `parent_asin`, `title`, `category`, `features`, `price`, and more.
 
@@ -75,8 +77,8 @@ To run this project locally, follow these steps:
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/yourusername/recsys-llm.git
-    cd recsys-llm
+    git clone https://github.com/babaniyi/LLMs-for-RecSys.git
+    cd LLMs-for-RecSys
     ```
 
 2. **Install Dependencies**:
@@ -90,7 +92,6 @@ To run this project locally, follow these steps:
 
 4. **Configure Environment Variables**:
     If using CUDA, ensure your environment is properly set up for PyTorch GPU usage.
-
 
 To run the script. Go to the command line and run the following:
 
@@ -121,7 +122,7 @@ python gpt-experiment.py --run_solution phi3_and_lora
 
 ### **Data Preprocessing**
 
-To curate quality training data, we focus on users that has purchased at least 10 materials.
+To curate quality training data, we focus on users who have purchased at least 10 materials.
 The data should be preprocessed before training. The `get_next_10_items` function processes user interaction data and ensures that each entry contains a list of the next 10 items based on historical interactions.
 
 ```python
@@ -129,7 +130,7 @@ df_with_next_10_items = get_next_10_items_optimized(df, padding_strategy='repeat
 ```
 
 ### **Train/Test/Validation Split**
-You can split the data while preserving its temporal time order to ensure there is no data and target leakage using the `temporal_train_val_test_split` function:
+You can split the data while preserving its temporal time order to ensure no data and target leakage using the `temporal_train_val_test_split` function:
 
 ```python
 train_df, val_df, test_df = split_data_temporal(df_with_next_10_items, train_ratio=0.7, val_ratio=0.1, test_ratio=0.2)
@@ -140,17 +141,6 @@ train_df, val_df, test_df = split_data_temporal(df_with_next_10_items, train_rat
 
 ## **Training the Model**
 First, we calculate the initial training and validation set loss before we start training (the goal is to minimize the loss). The initial train and validation losses can be visualised in a plot `loss-plot-...pdf` which is generated by the model.
-
-Finally, to train the model on the data, we use the `train_model_simple` function:
-
-```python
-train_losses, val_losses, tokens_seen = train_model_simple(
-        model, train_loader, val_loader, optimizer, device,
-        num_epochs=num_epochs, eval_freq=5, eval_iter=5,
-        start_context=start_context, tokenizer=tokenizer,
-        special_chars=special_user_item_ids,
-        )
-```
 
 Make sure that you have your CUDA environment set up properly if using GPUs. The model will output training and validation loss metrics after every evaluation step.
 
