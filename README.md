@@ -26,7 +26,6 @@ This code was run using [Lightning AI](lightning.ai) L4 GPU.
 
 These metrics provide insight into the model's ability to recommend relevant products. The precision@10 indicates that, on average, 2.2% of the top-10 recommended items are correct. Recall@10 suggests the model can retrieve nearly 6% of all relevant items. The MRR score of 0.041 shows that correct recommendations are ranked relatively low in the list. HR@10 reflects the percentage of times the correct product was recommended within the top-10, and NDCG@10 assesses both the ranking and relevance of the predicted items.
 
-
 > While these numbers are modest and indicate that the model is far from perfect in recommending the exact next items, they still offer valuable insight into the potential of LLMs in capturing user intent and product features.
 
 To reiterate, the primary focus of this project is not just to maximize performance but to explore whether LLMs can offer a viable approach to recommendation tasks. The experiment is ongoing, and future improvements will focus on refining the model and comparing its performance with these baseline approaches (such as collaborative filtering and matrix factorization). If one is focused on prediction accuracy alone, we could train the model on predicting the next product category a customer would purchase instead of exact items.
