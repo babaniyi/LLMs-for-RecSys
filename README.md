@@ -13,15 +13,18 @@ This code was run using [Lightning AI](lightning.ai) L4 GPU.
 - **Sequential Recommendation System**: Predicts the next (maximum) 10 items a user might purchase in the future, based on their review history.
 - **Custom Data Processing**: Handles temporal data (order by time to prevent data/target/information leakage) and processes the sequence of user interactions, ensuring proper padding and handling of missing data.
 - **Fine-tuning GPT-2**: Fine-tuned GPT-2 medium model to handle recommendation tasks using user reviews, product metadata, and timestamps.
-- **Evaluation Metrics**: Supports evaluation with metrics such as Recall, Precision, MRR and more.
+- **Evaluation Metrics**: Supports evaluation with metrics such as Recall, Precision, MRR, Hit Rate, Normalized Discounted Cumulative Gain and more.
 - **Custom Padding Strategies**: The model can handle missing data with customizable padding strategies (repeat, special token, or no padding).
+
 
 #### Achieved Metrics:
 - **Precision@10**: $2.2$%
 - **Recall@10**: $5.5$%
-- **Mean Reciprocal Rank (MRR)**: $0.04$
+- **Mean Reciprocal Rank (MRR)**: $0.04$%
+- **Hit Rate at 10 (HR@10)**: $5.7$%
+- **Normalized Discounted Cumulative Gain at 10 (NDCG@10)**: $0.04$%
 
-These metrics provide insight into the model's ability to recommend relevant products. The precision@10 indicates that, on average, out of the top 10 items recommended, only 2.2% of the recommendations were correct. Recall@10 suggests the model can retrieve nearly $6$% of all relevant items. The MRR measures how high the first relevant item appears in the recommendation list. A score of 0.04 suggests that the first relevant item is generally ranked lower in the top 10 results, which means the model is not prioritizing relevant items very early in the list.
+These metrics provide insight into the model's ability to recommend relevant products. The precision@10 indicates that, on average, 2.2% of the top-10 recommended items are correct. Recall@10 suggests the model can retrieve nearly 6% of all relevant items. The MRR score of 0.041 shows that correct recommendations are ranked relatively low in the list. HR@10 reflects the percentage of times the correct product was recommended within the top-10, and NDCG@10 assesses both the ranking and relevance of the predicted items.
 
 > While these numbers are modest and indicate that the model is far from perfect in recommending the exact next items, they still offer valuable insight into the potential of LLMs in capturing user intent and product features.
 
@@ -163,22 +166,29 @@ Example of the processed data sent to the model.
 
 ## **Evaluation**
 
-The model supports evaluation metrics like Recall, Precision, Mean Reciprocal Rank. After generating predictions for a batch of reviews, the recommended items are compared with the actual next items to calculate these metrics.
+The model supports evaluation metrics like **Recall**, **Precision**, **Mean Reciprocal Rank (MRR)**, **Hit Rate at 10 (HR@10)**, and **Normalized Discounted Cumulative Gain at 10 (NDCG@10)**. After generating predictions for a batch of reviews, the recommended items are compared with the actual next items to calculate these metrics.
 
-You can evaluate the model using the `evaluate_recall_precision` function:
+### Evaluation Metrics:
+- **Precision@10**: Proportion of relevant items in the top-10 predictions.
+- **Recall@10**: Proportion of relevant items retrieved from the actual items.
+- **MRR**: The reciprocal rank of the first relevant item in the top-10 recommendations.
+- **HR@10**: Binary value indicating whether any relevant item appears in the top-10 predictions (1 if yes, 0 if no).
+- **NDCG@10**: Discounted Cumulative Gain normalized over the ideal ranking, taking into account the rank position of relevant items.
+
+You can evaluate the model using the `evaluate_metrics` function:
 
 ```python
 evaluate_metrics(output_list, k=10)
 ```
-Example of the output list which includes the output and model response.
-```
+
+Example of the output list, which includes the output and model response:
+
+```python
 [{
     "input": "<|user_AE2BFR2EGPHCYISLCTPOX2AQHKVQ|>",
     "output": "<|item_B07FTFD1XB|>, <|endoftext|>, <|endoftext|>, <|endoftext|>, <|endoftext|>, <|endoftext|>, <|endoftext|>, <|endoftext|>, <|endoftext|>, <|endoftext|>",
     "model_response": "<|item_B0081E9HRY|>, <|item_B07CP1KY9M|>, <|item_B07MWVCVR4|>, <|item_B07QVKSMKK|>, <|item_B07PJ8H3W5|>, <|item_B07PJ8H3W5|>, <|item_B07PJ8H3W5|>, <|item_B07V3ZF517|>, <|item_B07V3ZF517|>,"
-    },
-    
-    ]
+}]
 ```
 
 ---
